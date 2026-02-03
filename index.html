@@ -37,7 +37,7 @@
       background: rgba(255, 255, 255, 0.18);
       border-radius: 22px;
       padding: 25px;
-      max-width: 500px;
+      max-width: 520px;
       width: 100%;
       box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
     }
@@ -47,8 +47,21 @@
       line-height: 1.6;
     }
 
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 14px;
+      object-fit: cover;
+    }
+
     .question {
-      margin-top: 25px;
+      margin-top: 20px;
       font-size: 1.3rem;
       font-weight: 600;
     }
@@ -71,13 +84,8 @@
       position: absolute;
     }
 
-    #yesBtn {
-      left: 20%;
-    }
-
-    #noBtn {
-      right: 20%;
-    }
+    #yesBtn { left: 20%; }
+    #noBtn { right: 20%; }
 
     button:hover {
       transform: translateY(-2px);
@@ -111,25 +119,36 @@
 <body>
   <div class="container">
     <h1>Happy Valentine’s Day ❤️</h1>
-    <h2>My dearest Sadiyah</h2>
+    <h2>My cutes, Sadiyah</h2>
 
     <div class="card">
       <p>
-        Every day with you is my favourite day, but today I just want to remind you how deeply loved you are.
-        You are my calm, my laughter, my dua, and my home.
+        Cutes, loving you has been one of the easiest and most beautiful things in my life.
+        You make me feel calm when everything feels loud.
+        You make the good days better and the hard days softer.
       </p>
       <p>
-        Thank you for being you, for loving me the way you do, and for making life softer and sweeter.
-        I’m grateful for you today and always, InshaAllah.
+        When I look at you I feel grateful.
+        Grateful for your heart your patience your kindness and the way you care so deeply.
+        I thank Allah for you more than you know and I pray we keep choosing each other every day.
       </p>
 
-      <div class="question">Will you be my Valentine? 💕</div>
+      <div class="gallery">
+        <img src="photo1.jpg" alt="Us together" />
+        <img src="photo2.jpg" alt="Us together" />
+        <img src="photo3.jpg" alt="Us together" />
+      </div>
+
+      <div class="question">Will you be my Valentine, cutes? 💕</div>
 
       <div class="buttons">
         <button id="yesBtn" onclick="yesClicked()">Yes ❤️</button>
         <button id="noBtn" onmouseover="moveNo()" ontouchstart="moveNo()">No 🙈</button>
       </div>
+
+      <p style="margin-top:20px; font-weight:600;">Love Azhar ❤️</p>
     </div>
+  </div>
   </div>
 
   <footer>
@@ -138,7 +157,7 @@
 
   <script>
     function yesClicked() {
-      alert("Yay! I choose you, today, tomorrow, and always 💖");
+      alert("I knew it 😌 I choose you every single time ❤️");
     }
 
     function moveNo() {
