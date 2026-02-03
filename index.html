@@ -24,51 +24,73 @@
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 2.6rem;
       margin-bottom: 10px;
     }
 
     h2 {
       font-weight: 300;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 20px;
-      padding: 30px;
-      max-width: 600px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 22px;
+      padding: 25px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
     }
 
     p {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       line-height: 1.6;
     }
 
-    button {
+    .question {
       margin-top: 25px;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      position: relative;
+      height: 60px;
+    }
+
+    button {
       background: white;
       color: #ff4d6d;
       border: none;
-      padding: 15px 30px;
+      padding: 12px 28px;
       border-radius: 50px;
       font-size: 1rem;
       cursor: pointer;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: absolute;
+    }
+
+    #yesBtn {
+      left: 20%;
+    }
+
+    #noBtn {
+      right: 20%;
     }
 
     button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
     }
 
     .heart {
       position: fixed;
       bottom: -50px;
-      font-size: 24px;
+      font-size: 22px;
       animation: floatUp 6s linear infinite;
       opacity: 0.7;
+      pointer-events: none;
     }
 
     @keyframes floatUp {
@@ -79,9 +101,9 @@
 
     footer {
       position: fixed;
-      bottom: 15px;
+      bottom: 12px;
       width: 100%;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       opacity: 0.8;
     }
   </style>
@@ -89,20 +111,24 @@
 <body>
   <div class="container">
     <h1>Happy Valentine’s Day ❤️</h1>
-    <h2>To the one who holds my heart</h2>
+    <h2>My dearest Sadiyah</h2>
 
     <div class="card">
       <p>
-        Every day with you is my favourite day, but today I just wanted to pause and remind you how deeply loved you are.
+        Every day with you is my favourite day, but today I just want to remind you how deeply loved you are.
         You are my calm, my laughter, my dua, and my home.
       </p>
       <p>
         Thank you for being you, for loving me the way you do, and for making life softer and sweeter.
-        I’m grateful for you today and always.
+        I’m grateful for you today and always, InshaAllah.
       </p>
-      <p><strong>Forever yours ❤️</strong></p>
 
-      <button onclick="showMessage()">Click for a surprise</button>
+      <div class="question">Will you be my Valentine? 💕</div>
+
+      <div class="buttons">
+        <button id="yesBtn" onclick="yesClicked()">Yes ❤️</button>
+        <button id="noBtn" onmouseover="moveNo()" ontouchstart="moveNo()">No 🙈</button>
+      </div>
     </div>
   </div>
 
@@ -111,8 +137,22 @@
   </footer>
 
   <script>
-    function showMessage() {
-      alert("I choose you. Today, tomorrow, and always 💕");
+    function yesClicked() {
+      alert("Yay! I choose you, today, tomorrow, and always 💖");
+    }
+
+    function moveNo() {
+      const noBtn = document.getElementById('noBtn');
+      const container = document.querySelector('.buttons');
+
+      const maxX = container.offsetWidth - noBtn.offsetWidth;
+      const maxY = container.offsetHeight - noBtn.offsetHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noBtn.style.left = randomX + 'px';
+      noBtn.style.top = randomY + 'px';
     }
 
     function createHeart() {
@@ -128,7 +168,7 @@
       }, 6000);
     }
 
-    setInterval(createHeart, 500);
+    setInterval(createHeart, 600);
   </script>
 </body>
 </html>
