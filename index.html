@@ -143,13 +143,45 @@
 
     function moveNo() {
       const noBtn = document.getElementById('noBtn');
+      const yesBtn = document.getElementById('yesBtn');
       const container = document.querySelector('.buttons');
 
-      const maxX = container.offsetWidth - noBtn.offsetWidth;
-      const maxY = container.offsetHeight - noBtn.offsetHeight;
+      const padding = 10;
+      const maxX = container.offsetWidth - noBtn.offsetWidth - padding;
+      const maxY = container.offsetHeight - noBtn.offsetHeight - padding;
 
-      const randomX = Math.random() * maxX;
-      const randomY = Math.random() * maxY;
+      let randomX, randomY;
+      let overlap;
+
+      do {
+        randomX = Math.random() * maxX;
+        randomY = Math.random() * maxY;
+
+        const noRect = {
+          left: randomX,
+          right: randomX + noBtn.offsetWidth,
+          top: randomY,
+          bottom: randomY + noBtn.offsetHeight
+        };
+
+        const yesRect = yesBtn.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+
+        const yesRelative = {
+          left: yesRect.left - containerRect.left,
+          right: yesRect.right - containerRect.left,
+          top: yesRect.top - containerRect.top,
+          bottom: yesRect.bottom - containerRect.top
+        };
+
+        overlap = !(
+          noRect.right < yesRelative.left ||
+          noRect.left > yesRelative.right ||
+          noRect.bottom < yesRelative.top ||
+          noRect.top > yesRelative.bottom
+        );
+
+      } while (overlap);
 
       noBtn.style.left = randomX + 'px';
       noBtn.style.top = randomY + 'px';
